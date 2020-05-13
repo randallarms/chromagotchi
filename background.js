@@ -3,13 +3,15 @@ var level = parseInt(localStorage["petLevel"]);
 var xp = parseInt(localStorage["petXP"]);
 var variation = localStorage["petVariation"];
 
-if (type == undefined) {
+var types = ["slime", "orb", "gem", "plant", "animal"];
+
+if (type in types) {
 	type = "slime";
 	localStorage["petType"] = type;
-} else if (level == undefined) {
+} else if (!(level > 0 && level < 10)) {
 	level = 1;
 	localStorage["petLevel"] = level;
-} else if (xp == undefined) {
+} else if (!(xp > 0 && level < 10000)) {
 	xp = 1;
 	localStorage["petXP"] = xp;
 } else if (variation == undefined) {
