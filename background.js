@@ -1,3 +1,4 @@
+var id = localStorage["petId"];
 var type = localStorage["petType"];
 var level = parseInt(localStorage["petLevel"]);
 var xp = parseInt(localStorage["petXP"]);
@@ -17,6 +18,15 @@ if (type in types) {
 } else if (variation == undefined) {
 	variation = "green";
 	localStorage["petVariation"] = variation;
+}
+
+function getId() {
+	return localStorage["petId"];
+}
+
+function setId(val) {
+	id = val;
+	updatePet(id);
 }
 
 function getType() {
@@ -39,7 +49,11 @@ chrome.runtime.onInstalled.addListener(function() {
 	
 });
 
-function updatePet(mod) {
+function updatePet(id) {
+	//Update local vars and local storage values to reflect current pet; get stats from saved pets
+}
+
+function giveXp(mod) {
 	
 	var xp = parseInt(localStorage["petXP"]);
 	localStorage["petXP"] = xp + mod;
@@ -55,10 +69,10 @@ function updatePet(mod) {
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	var mod = 2;
-	updatePet(mod);
+	giveXp(mod);
 });
 
 chrome.tabs.onCreated.addListener(function(tab) {
 	var mod = 1;
-	updatePet(mod);
+	giveXp(mod);
 });
