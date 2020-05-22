@@ -6,18 +6,28 @@ var variation = localStorage["petVariation"];
 
 var types = ["slime", "orb", "gem", "plant", "animal"];
 
-if (type in types) {
-	type = "slime";
-	localStorage["petType"] = type;
-} else if (!(level > 0 && level < 10)) {
-	level = 1;
-	localStorage["petLevel"] = level;
-} else if (!(xp > 0 && level < 10000)) {
-	xp = 1;
-	localStorage["petXP"] = xp;
-} else if (variation == undefined) {
-	variation = "green";
-	localStorage["petVariation"] = variation;
+function petCheck() {
+
+	if (!(type in types)) {
+		type = "slime";
+		localStorage["petType"] = type;
+	}
+
+	if (!(level > 0 && level < 10)) {
+		level = 1;
+		localStorage["petLevel"] = level;
+	}
+
+	if (!(xp > 0 && level < 10000)) {
+		xp = 1;
+		localStorage["petXP"] = xp;
+	}
+
+	if (variation == undefined) {
+		variation = "green";
+		localStorage["petVariation"] = variation;
+	}
+
 }
 
 function getId() {
@@ -33,6 +43,11 @@ function getType() {
 	return localStorage["petType"];
 }
 
+function setType(val) {
+	type = val;
+	updatePet(id);
+}
+
 function getLevel() {
 	return parseInt(localStorage["petLevel"]);
 }
@@ -45,11 +60,16 @@ function getVariation() {
 	return localStorage["petVariation"];
 }
 
+function setVariation(val) {
+	variation = val;
+	updatePet(id);
+}
+
 chrome.runtime.onInstalled.addListener(function() {
 	
 });
 
-function updatePet(id) {
+function updatePet(newId) {
 	//Update local vars and local storage values to reflect current pet; get stats from saved pets
 }
 

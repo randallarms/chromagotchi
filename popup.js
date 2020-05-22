@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	var bg = chrome.extension.getBackgroundPage();
 	
+	bg.petCheck();
+	
 	var id = bg.getId();
 	var type = bg.getType();
 	var xp = bg.getXP();
@@ -30,27 +32,54 @@ document.addEventListener('DOMContentLoaded', function() {
 			var text = input.value;
 			switch (text.toLowerCase()) {
 				case "greenslime":
-					//Give level 1 green slime
+					//Set pet as level 1 green slime
+					bg.setType("slime");
+					bg.setVariation("green");
+					break;
 				case "redslime":
-					//Give level 1 red slime
+					//Set pet as level 1 red slime
+					bg.setType("slime");
+					bg.setVariation("red");
+					break;
 				case "blueslime":
-					//Give level 1 blue slime
+					//Set pet as level 1 blue slime
+					bg.setType("slime");
+					bg.setVariation("blue");
+					break;
 				case "brownslime":
-					//Give level 1 brown slime
+					//Set pet as level 1 brown slime
+					bg.setType("slime");
+					bg.setVariation("brown");
+					break;
 				case "greenorb":
-					//Give level 1 green orb
+					//Set pet as level 1 green orb
+					bg.setType("orb");
+					bg.setVariation("green");
+					break;
 				case "redorb":
-					//Give level 1 red orb
+					//Set pet as level 1 red orb
+					bg.setType("orb");
+					bg.setVariation("red");
+					break;
 				case "blueorb":
-					//Give level 1 blue orb
+					//Set pet as level 1 blue orb
+					bg.setType("orb");
+					bg.setVariation("blue");
+					break;
 				case "dandelion":
-					//Give level 1 dandelion
+					//Set pet as level 1 dandelion
+					bg.setType("plant");
+					bg.setVariation("dandelion");
+					break;
 				default:
 					//Command error
+					alert("No such command.");
+					break;
 			}
+			bg.petCheck();
+			setPet(pet, bg.getType(), bg.getXP(), bg.getLevel(), bg.getVariation());
+			alert("Your pet is now a " + bg.getVariation() + " " + bg.getType() + "!");
 		}
-	}
+	});
 	
 });
-		
-}, false);
