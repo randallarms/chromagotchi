@@ -33,49 +33,51 @@ document.addEventListener('DOMContentLoaded', function() {
 			switch (text.toLowerCase()) {
 				case "greenslime":
 					//Set pet as level 1 green slime
-					bg.setType("slime");
-					bg.setVariation("green");
+					type = "slime";
+					variation = "green";
 					break;
 				case "redslime":
 					//Set pet as level 1 red slime
-					bg.setType("slime");
-					bg.setVariation("red");
+					type = "slime";
+					variation = "red";
 					break;
 				case "blueslime":
 					//Set pet as level 1 blue slime
-					bg.setType("slime");
-					bg.setVariation("blue");
+					type = "slime";
+					variation = "blue";
 					break;
 				case "brownslime":
 					//Set pet as level 1 brown slime
-					bg.setType("slime");
-					bg.setVariation("brown");
+					type = "slime";
+					variation = "brown";
 					break;
 				case "greenorb":
 					//Set pet as level 1 green orb
-					bg.setType("orb");
-					bg.setVariation("green");
+					type = "orb";
+					variation = "green";
 					break;
 				case "redorb":
 					//Set pet as level 1 red orb
-					bg.setType("orb");
-					bg.setVariation("red");
+					type = "orb";
+					variation = "red";
 					break;
 				case "blueorb":
 					//Set pet as level 1 blue orb
-					bg.setType("orb");
-					bg.setVariation("blue");
+					type = "orb";
+					variation = "blue";
 					break;
 				case "dandelion":
 					//Set pet as level 1 dandelion
-					bg.setType("plant");
-					bg.setVariation("dandelion");
+					type = "plant";
+					variation = "dandelion";
 					break;
 				default:
 					//Command error
 					alert("No such command.");
 					break;
 			}
+			bg.setType(type);
+			bg.setVariation(variation);
 			bg.petCheck();
 			setPet(pet, bg.getType(), bg.getXP(), bg.getLevel(), bg.getVariation());
 			alert("Your pet is now a " + bg.getVariation() + " " + bg.getType() + "!");

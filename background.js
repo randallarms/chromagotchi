@@ -8,7 +8,7 @@ var types = ["slime", "orb", "gem", "plant", "animal"];
 
 function petCheck() {
 
-	if (!(type in types)) {
+	if (type == undefined) {
 		type = "slime";
 		localStorage["petType"] = type;
 	}
@@ -71,6 +71,11 @@ chrome.runtime.onInstalled.addListener(function() {
 
 function updatePet(newId) {
 	//Update local vars and local storage values to reflect current pet; get stats from saved pets
+	localStorage["petType"] = type;
+	localStorage["petLevel"] = level;
+	localStorage["petXP"] = xp;
+	localStorage["petVariation"] = variation;
+	petCheck();
 }
 
 function giveXp(mod) {
